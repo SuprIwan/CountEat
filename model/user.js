@@ -14,6 +14,18 @@ const User = mongoose.model('user', {
     type: String,
     require: true,
 	},
+	tinggibadan: {
+    type: String,
+    require: true,
+	},
+	beratbadan: {
+    type: String,
+    require: true,
+	},
+	umur: {
+    type: String,
+    require: true,
+	},
 });
 
 module.exports = User;

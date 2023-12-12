@@ -6,12 +6,15 @@ const db = new Firestore({
 
 // add data
 const addDataUsers = async (data) => {
-	const { username, email, password } = data;
+	const { username, email, password, tinggibadan, beratbadan, umur } = data;
 	const docRef = db.collection('users').doc();
 	await docRef.set({
 		username,
 		email,
 		password,
+		tinggibadan,
+		beratbadan,
+		umur
 	});
 };
 
@@ -46,7 +49,7 @@ const getDataByKey = async (key, value) => {
 
 //update data
 const updateData = async (data) => {
-	const { id, email, password, username } = data;
+	const { id, email, password, username, tinggibadan, beratbadan, umur } = data;
 	await db
 		.collection('users')
 		.doc(id)
@@ -54,6 +57,9 @@ const updateData = async (data) => {
 			email,
 			password,
 			username,
+			tinggibadan,
+			beratbadan,
+			umur
 		})
 		.then((res) => console.log(res))
 		.catch((err) => console.log(err));

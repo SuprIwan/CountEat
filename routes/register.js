@@ -32,6 +32,9 @@ router.post(
 				}
 				return true;
 			}),
+			body('tinggibadan').isNumeric().withMessage('Tinggi badan harus angka'),
+			body('beratbadan').isNumeric().withMessage('Berat badan harus angka'),
+			body('umur').isNumeric().withMessage('Umur harus angka'),
 	],
 	async (req, res) => {
 		const errors = validationResult(req);
@@ -42,12 +45,12 @@ router.post(
 				message: errors.array(),
 			});
 		} else {
-			const { username, email, password } = req.body;
+			const { username, email, password, tinggibadan, beratbadan, umur } = req.body;
 			const saltRound = 10;
 			bcrypt
 				.hash(password, saltRound)
 				.then((hash) => {
-					addDataUsers({ username, email, password: hash });
+					addDataUsers({ username, email, password: hash, tinggibadan, beratbadan, umur });
 				})
 				.then(() => {
 					res.status(201).json({
