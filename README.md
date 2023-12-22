@@ -78,3 +78,18 @@ res.status(200).json :
 	}
 }
 ```
+## Get BMR
+
+Route : /getbmr/username  
+Method : GET
+
+res.status(200).json :
+
+```json
+{
+    	"error": false,
+	"status": "success",
+   	"username": "username",
+   	"bmr": "bmr"
+}
+```
